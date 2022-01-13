@@ -1,0 +1,15 @@
+:host{
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.151);
+  transition: all 300ms ease;
+}
+
+
+img{
+  width:  100%;
+  height: 100%;
+  object-fit: cover;
+}

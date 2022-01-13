@@ -1,0 +1,47 @@
+
+<app-background [class.blur]="showColors.value"></app-background>
+<app-tesla-log></app-tesla-log>
+ 
+ 
+  <app-show-cars-colors-button (click)="showCarColors()" *ngIf="!(carService.images$.value)">
+    CHOOSE YOUR FAVORITE COLOR
+  </app-show-cars-colors-button>
+
+ 
+
+<ng-container *ngIf="showColors.value">
+    <section @animateCars [class.shrink]="carService.images$.value">
+      
+      <ng-container *ngFor="let color of colors">
+          <app-car [path]="color + '/one.jpg'" [color]="color" [class.highlightBorder]="color === currentColor"
+            [appExpand]="color" (showOrHide)="showOrHideButton($event)" (click)="highLight(color)">
+            <ng-container *ngIf="!(carService.images$.value)">
+              <button *ngIf="(showButton === color)" @animateButton id="showOrHideButton">
+                {{ color }}
+             </button>
+            </ng-container>
+
+          </app-car>
+      </ng-container>
+            
+    </section>
+</ng-container>
+
+      
+<ng-container *ngIf="carService.images$ | async as cars">
+  <app-show-gallery [cars]="cars" @animateGallery></app-show-gallery>
+</ng-container>
+
+
+  
+
+
+
+
+  
+      
+        
+
+
+
+

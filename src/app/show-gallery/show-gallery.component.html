@@ -1,0 +1,13 @@
+
+<ng-container *ngFor="let car of cars; let i =index">
+     <div [@animate]="{value: car.show, params: {enter: car.enter, leave: car.leave}}" class="imageContainer">
+          <img [src]="'../../assets/' + car.path" alt="" @onEnter/>
+     </div>
+</ng-container>
+
+<div class="dot-container" @dot>
+     <div *ngFor="let car of cars; let i = index" [class]="{children: true, indicate: (i === index)}"></div>
+</div>          
+<button class="right" (click)="right('100%', '-100%')"></button>
+<button class="left" (click)="left('-100%', '100%')"></button>
+

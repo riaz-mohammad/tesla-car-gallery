@@ -1,0 +1,99 @@
+:host{
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+  
+
+section{
+  width: 70%;
+  height: 450px;
+  display: flex;
+  gap: 15px;
+  transition: all 800ms ease;
+
+  &.shrink{
+    height: 120px;
+    & app-car{
+      border-radius: 20px;
+    }
+  }
+      
+  & app-car{
+    flex-basis: 100%;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+  }
+  &:hover app-car{
+      flex-basis: 10%;
+      filter: brightness(30%);
+    } 
+}
+
+$expand: 100%;
+$brightness: 100%;
+$shadow: 5px 0px 10px 5px rgba(51, 45, 45, 0.247);
+
+@mixin expand() {
+  
+    flex-basis: $expand;
+    box-shadow: $shadow;
+    filter: brightness($brightness);
+
+}
+
+section app-car:hover{
+  @include expand();
+}
+  
+
+section.shrink app-car:hover{
+  border: 1px solid rgba(255, 255, 255, 0.712);
+  transform: scale(1.1);
+  
+}
+
+section.shrink:hover app-car{
+  flex-basis: 100%;
+}
+  
+
+
+
+
+#showOrHideButton{
+  transition: all 300ms ease;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 150px;
+  height: 40px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: 1px solid rgba(255, 255, 255, 0.486);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.473);
+  z-index: 200;
+  &:hover{
+    background-color:  rgba(255, 255, 255, 0.486)
+  }
+}
+
+
+.highlightBorder{
+  border: 1px solid rgba(255, 255, 255, 0.712);
+}
+
+
+.blur{
+  filter: brightness(30%);
+}
+
+  
